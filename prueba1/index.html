@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="sendRequest()">
+        Send Ajax Request
+    </button>
+    <h1 id="titulo"></h1>
+    <script>
+        function sendRequest() {
+            let objetoAjax = new XMLHttpRequest();
+            objetoAjax.open("POST", " backend.php", true);
+            // objetoAjax.setRequestHeader("Content-Type", "application/x-ww-form-urlencoded"); Se usa con GET
+            objetoAjax.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); //Se usa con POST
+            objetoAjax.onreadystatechange = function () {
+                document.getElementById("titulo").innerHTML = objetoAjax.responseText;
+            }
+            objetoAjax.send("username=Ivan");
+        }
+    </script>
+</body>
+</html>
